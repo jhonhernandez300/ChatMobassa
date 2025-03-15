@@ -1,0 +1,13 @@
+<div class="container mt-4">
+    <h2 class="text-center">Chat en Tiempo Real</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let msg of mensajes">
+        <strong>{{ msg.usuario }}:</strong> {{ msg.mensaje }}
+      </li>
+    </ul>
+    <div class="mt-3">
+      <input [(ngModel)]="mensaje" class="form-control" placeholder="Escribe un mensaje">
+      <button (click)="enviarMensaje()" class="btn btn-primary mt-2">Enviar</button>
+    </div>
+  </div>
+  
