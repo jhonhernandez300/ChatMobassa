@@ -1,0 +1,84 @@
+<div class="container mt-5">
+    <mat-card class="custom-card">
+      <mat-card-header class="mb-4">
+        <mat-card-title class="text-center">GUARDAR USUARIO</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  
+          <div class="row custom-row"> 
+            <div class="col-md-6">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre" placeholder="Nombre">
+                <mat-error *ngIf="submitted && form['nombre'].errors">
+                  <div *ngIf="form['nombre']?.errors?.['required']">Requerido</div>
+                  <div *ngIf="form['nombre']?.errors?.['minlength']">Al menos 3 caracteres</div>
+                  <div *ngIf="form['nombre']?.errors?.['maxlength']">Hasta 30 caracteres</div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <div class="col-md-6">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password" placeholder="Password">
+                <mat-error *ngIf="submitted && form['password'].errors">
+                  <div *ngIf="form['password']?.errors?.['required']">Requerido</div>
+                  <div *ngIf="form['password']?.errors?.['minlength']">Al menos 8 caracteres</div>
+                  <div *ngIf="form['password']?.errors?.['maxlength']">Hasta 30 caracteres</div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row custom-row mt-4">
+            <div class="col-md-6">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Correo</mat-label>
+                <input matInput formControlName="correo" placeholder="Correo">
+                <mat-error *ngIf="submitted && form['correo'].errors">
+                  <div *ngIf="form['correo']?.errors?.['required']">Requerido</div>
+                  <div *ngIf="form['correo']?.errors?.['minlength']">Al menos 8 caracteres</div>
+                  <div *ngIf="form['correo']?.errors?.['maxlength']">Hasta 30 caracteres</div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <div class="col-md-6">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Apodo</mat-label>
+                <input matInput formControlName="apodo" placeholder="Apodo">
+                <mat-error *ngIf="submitted && form['apodo'].errors">
+                  <div *ngIf="form['apodo']?.errors?.['required']">Requerido</div>
+                  <div *ngIf="form['apodo']?.errors?.['minlength']">Al menos 1 carácter</div>
+                  <div *ngIf="form['apodo']?.errors?.['maxlength']">Hasta 7 caracteres</div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row custom-row mt-4">
+            <div class="col">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Imagen URL</mat-label>
+                <input matInput formControlName="imagenURL" placeholder="Imagen URL">
+                <mat-error *ngIf="submitted && form['imagenURL'].errors">
+                  <div *ngIf="form['imagenURL']?.errors?.['required']">Requerido</div>
+                  <div *ngIf="form['imagenURL']?.errors?.['minlength']">Al menos 4 caracteres</div>
+                  <div *ngIf="form['imagenURL']?.errors?.['maxlength']">Hasta 60 caracteres</div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="text-center mt-4 d-flex justify-content-center gap-3">
+            <button mat-raised-button class="btn btn-success">Limpiar</button>
+            <button mat-raised-button class="btn btn-secondary px-4 py-2" type="submit">Guardar</button>
+          </div>
+  
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

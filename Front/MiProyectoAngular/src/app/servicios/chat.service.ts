@@ -25,7 +25,7 @@ export class ChatService {
 
   iniciarConexion() {
     this.hubConnection = new HubConnectionBuilder()
-      .withUrl('http://localhost:5181/chathub')
+      .withUrl('http://localhost:5 181/chathub')
       .build();
 
     this.hubConnection.start().catch(err => console.error('Error al conectar SignalR', err));

@@ -46,6 +46,22 @@
     ]
   },
   {
+    "ContainingType": "MiProyectoAPI.Controllers.UsuariosController",
+    "Method": "GuardarUsuario",
+    "RelativePath": "api/Usuarios/GuardarUsuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "MiProyectoAPI.Models.Usuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MiProyectoAPI.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
