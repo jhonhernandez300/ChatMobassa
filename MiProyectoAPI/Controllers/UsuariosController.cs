@@ -17,6 +17,34 @@ namespace MiProyectoAPI.Controllers
             _context = context;
         }
 
+        [HttpGet("ObtenerNombre/{usuarioId}")]
+        public async Task<IActionResult> ObtenerNombre(int usuarioId)
+        {
+            try
+            {
+                if (usuarioId <= 0) // Validamos si es un ID inválido
+                {
+                    return BadRequest("El ID de usuario no es válido.");
+                }
+
+                var usuario = await _context.Usuarios
+                    .Where(u => u.UsuarioId == usuarioId)
+                    .Select(u => u.Nombre)
+                    .FirstOrDefaultAsync();
+
+                if (usuario == null)
+                {
+                    return NotFound("Usuario no encontrado.");
+                }
+
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener el nombre del usuario: {ex.Message}");
+            }
+        }
+
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] UsuarioCorto usuarioCorto)
         {

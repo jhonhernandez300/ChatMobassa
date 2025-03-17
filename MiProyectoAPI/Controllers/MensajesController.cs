@@ -19,9 +19,28 @@ namespace MiProyectoAPI.Controllers
         }
 
         [HttpGet("ObtenerMensajes")]
-        public async Task<ActionResult<IEnumerable<Mensaje>>> ObtenerMensajes()
+        public async Task<IActionResult> ObtenerMensajes()
         {
-            return await _context.Mensajes.ToListAsync();
+            try
+            {
+                var mensajes = await _context.Mensajes
+                    .Include(m => m.Usuario) // Trae la relación con Usuario
+                    .Select(m => new MensajeConUsuarioNombreDto
+                    {
+                        id = m.Id,
+                        contenido = m.Contenido,
+                        fechaYHora = m.FechaYHora,
+                        usuarioId = m.UsuarioId,
+                        usuarioNombre = m.Usuario.Nombre
+                    })
+                    .ToListAsync();
+
+                return Ok(mensajes);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener los mensajes: {ex.Message}");
+            }
         }
 
         [HttpPost("GuardarMensaje")]

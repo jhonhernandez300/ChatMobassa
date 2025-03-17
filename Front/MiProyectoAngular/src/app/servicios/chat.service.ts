@@ -3,33 +3,30 @@ import { HttpClient } from '@angular/common/http';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { Observable, Subject } from 'rxjs';
 import { iMensaje } from '../Interfaces/iMensaje';
+import { iMensajeConUsuarioNombre } from '../Interfaces/iMensajeConUsuarioNombre';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-
   private hubConnection!: HubConnection;
-  private mensajesSubject = new Subject<iMensaje>();
+  private mensajesSubject = new Subject<iMensajeConUsuarioNombre>();
   private apiUrl = 'https://localhost:7276/api/mensajes';
 
   constructor(private http: HttpClient) {}
 
-  obtenerMensajes(): Observable<iMensaje[]> {
-    return this.http.get<iMensaje[]>(`${this.apiUrl}/ObtenerMensajes`);
+  obtenerMensajes(): Observable<iMensajeConUsuarioNombre[]> {
+    return this.http.get<iMensajeConUsuarioNombre[]>(`${this.apiUrl}/ObtenerMensajes`);
   }
 
   enviarMensaje(mensaje: iMensaje) {
-    // Asegurar que UsuarioId sea un número
     mensaje.UsuarioId = Number(mensaje.UsuarioId);    
 
-    // Guardar mensaje en la API
     this.http.post<iMensaje>(`${this.apiUrl}/GuardarMensaje`, mensaje).subscribe({
       next: () => console.log('Mensaje guardado correctamente'),
       error: err => console.error('Error en la API:', err)
     });
 
-    // Enviar mensaje a través de SignalR
     if (this.hubConnection) {
       this.hubConnection.invoke('EnviarMensaje', mensaje)
         .catch(err => console.error('Error al enviar mensaje a SignalR:', err));
@@ -39,7 +36,7 @@ export class ChatService {
   iniciarConexion() {
     this.hubConnection = new HubConnectionBuilder()
       .withUrl('https://localhost:7276/chathub')
-      .withAutomaticReconnect() // Intentar reconectar automáticamente
+      .withAutomaticReconnect()
       .build();
 
     this.hubConnection.start()
@@ -49,11 +46,27 @@ export class ChatService {
     // Escuchar mensajes entrantes
     this.hubConnection.on('RecibirMensaje', (mensaje: iMensaje) => {
       console.log('Mensaje recibido:', mensaje);
-      this.mensajesSubject.next(mensaje);
+    
+      this.http.get<string>(`${this.apiUrl}/ObtenerNombre/${mensaje.UsuarioId}`).subscribe({
+        next: (usuarioNombre) => {
+          const mensajeConUsuario: iMensajeConUsuarioNombre = { 
+            id: mensaje.Id,  // Asegurar que tenga un id
+            contenido: mensaje.Contenido,  // Asignar correctamente el contenido
+            fechaYHora: mensaje.FechaYHora,  // Asegurar la fecha y hora
+            usuarioId: mensaje.UsuarioId,  // Asegurar el usuarioId
+            usuarioNombre: usuarioNombre  // Agregar el nombre del usuario
+          };
+    
+          this.mensajesSubject.next(mensajeConUsuario);
+        },
+        error: (error) => {
+          console.error('Error al obtener el nombre del usuario:', error);
+        }
+      });
     });
   }
 
-  obtenerMensajesEnTiempoReal(): Observable<iMensaje> {
+  obtenerMensajesEnTiempoReal(): Observable<iMensajeConUsuarioNombre> {
     return this.mensajesSubject.asObservable();
   }
 }

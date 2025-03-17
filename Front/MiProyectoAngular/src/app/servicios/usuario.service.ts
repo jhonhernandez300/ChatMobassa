@@ -23,6 +23,16 @@ export class UsuarioService {
     withCredentials: true
   };
 
+  ObtenerNombreUsuario(usuarioId: number): Observable<string> {
+    return this.http.get(`${this.apiUrl}/ObtenerNombre/${usuarioId}`, { responseType: 'text' }) // 👀 Forzamos texto
+      .pipe(
+        catchError(error => {
+          console.error('Error al obtener el nombre del usuario:', error);
+          return throwError(() => new Error('Error al obtener el nombre del usuario'));
+        })
+      );
+  }  
+
   GuardarUsuario(usuario: iUsuario): Observable<iUsuario[]> {
     return this.http.post<iUsuario[]>(`${this.apiUrl}/GuardarUsuario`, usuario, this.httpOptions)
       .pipe(
@@ -42,36 +52,4 @@ export class UsuarioService {
       })    
     );    
   }
-  
-
-  // ActualizarUsuario(usuario: iUsuarioConRolDTO): Observable<any> {             
-  //   return this.http.put(`${this.apiUrl}/ActualizarUsuario/${usuario.usuarioId}`, usuario).pipe(
-  //     catchError(error => {
-  //         console.error('Request error:', error);
-  //         return throwError(error);
-  //     })    
-  //   );    
-  // } 
-  
-  
-
-  // BorrarUsuario(id: number): Observable<any> {             
-  //   return this.http.delete(`${this.apiUrl}/BorrarUsuario` + "/" + id).pipe(
-  //     catchError(error => {
-  //         console.error('Request error:', error);
-  //         return throwError(error);
-  //     })    
-  //   );    
-  // }
-
-  
-
-  // ObtenerTodosLosUsuariosAsync(): Observable<any> {             
-  //   return this.http.get(`${this.apiUrl}/ObtenerTodosLosUsuariosAsync`).pipe(
-  //     catchError(error => {
-  //         console.error('Request error:', error);
-  //         return throwError(error);
-  //     })    
-  //   );    
-  
 }

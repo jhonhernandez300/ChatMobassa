@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../servicios/chat.service';
+import { UsuarioService } from '../servicios/usuario.service';
 import { SessionStorageService } from '../servicios/session-storage.service';
-import { iMensaje } from '../Interfaces/iMensaje';
+import { iMensajeConUsuarioNombre } from '../Interfaces/iMensajeConUsuarioNombre';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-chat',
@@ -9,43 +11,78 @@ import { iMensaje } from '../Interfaces/iMensaje';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {  
-  mensajes: {    
-      Id: number, 
-      Contenido: string,
-      FechaYHora: Date,    
-      UsuarioId: number  
-  }[] = []
+  mensajes: iMensajeConUsuarioNombre[] = []; // ✅ Ahora usa la nueva interfaz
   usuario: number = 0;
+  usuarioNombre: string = '';
   inputMensaje: string = '';
-  mensaje: iMensaje = {
-    Id: 0, 
-    Contenido: '',
-    FechaYHora: new Date(),    
-    UsuarioId: 0  
-  };
 
   constructor(
     private chatService: ChatService,
-    public sessionStorageService: SessionStorageService
+    public sessionStorageService: SessionStorageService,
+    private usuarioService: UsuarioService, 
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
     this.obtenerUsuario();
-    this.chatService.iniciarConexion();
-    // this.chatService.obtenerMensajes().subscribe(mensajes => this.mensajes = mensajes);
-    // this.chatService.obtenerMensajesEnTiempoReal().subscribe(mensaje => this.mensajes.push(mensaje));
   }
 
-  obtenerUsuario(){
-    this.usuario = this.sessionStorageService.getData("usuarioId");
-    console.log(this.usuario);
+  obtenerUsuario() {
+    const usuarioId = this.sessionStorageService.getData("usuarioId");
+
+    if (usuarioId) {
+      this.usuario = usuarioId;
+      //console.log(this.usuario);
+      this.obtenerNombreUsuario();
+      this.cargarMensajes();
+      this.chatService.iniciarConexion();
+      this.escucharMensajesEnTiempoReal();
+    } else {
+      console.error('No se encontró el ID del usuario en sessionStorage.');
+    }
+  }
+
+  obtenerNombreUsuario() {
+    //console.log(this.usuario);
+    this.usuarioService.ObtenerNombreUsuario(this.usuario).subscribe({      
+      next: (nombre: string) => this.usuarioNombre = nombre,
+      error: (error) => console.error('Error al obtener el nombre del usuario:', error)
+    });
+  }
+
+  cargarMensajes() {
+    this.chatService.obtenerMensajes().subscribe({      
+      next: (mensajes: iMensajeConUsuarioNombre[]) => {
+        console.log('Mensajes recibidos:', mensajes);
+        this.mensajes = mensajes;
+        this.cdr.detectChanges();  // Forzar actualización de la vista
+      },
+      error: (error) => console.error('Error al obtener los mensajes:', error)
+    });
+  }
+
+  escucharMensajesEnTiempoReal() {
+    this.chatService.obtenerMensajesEnTiempoReal().subscribe({
+      next: (mensaje: iMensajeConUsuarioNombre) => {
+        if (!this.mensajes.some(m => m.id === mensaje.id)) {
+          this.mensajes.push(mensaje);
+        }
+      },
+      error: (error) => console.error('Error al recibir mensaje en tiempo real:', error)
+    });
   }
 
   enviarMensaje() {
     if (this.inputMensaje.trim()) {
-      this.mensaje.Contenido = this.inputMensaje;
-      this.mensaje.UsuarioId = this.usuario;
-      this.chatService.enviarMensaje(this.mensaje);
+      const nuevoMensaje = {
+        Id: this.usuario, 
+        Contenido: this.inputMensaje,
+        FechaYHora: new Date(),
+        UsuarioId: this.usuario,
+        UsuarioNombre: this.usuarioNombre // ✅ Enviamos el nombre del usuario
+      };
+
+      this.chatService.enviarMensaje(nuevoMensaje);
       this.inputMensaje = '';
     }
   }

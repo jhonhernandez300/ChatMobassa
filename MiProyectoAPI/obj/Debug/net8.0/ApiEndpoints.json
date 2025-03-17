@@ -33,17 +33,7 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[MiProyectoAPI.Models.Mensaje, MiProyectoAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "MiProyectoAPI.Controllers.UsuariosController",
@@ -72,6 +62,22 @@
       {
         "Name": "usuarioCorto",
         "Type": "MiProyectoAPI.Models.UsuarioCorto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MiProyectoAPI.Controllers.UsuariosController",
+    "Method": "ObtenerNombre",
+    "RelativePath": "api/Usuarios/ObtenerNombre/{usuarioId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
