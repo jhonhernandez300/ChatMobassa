@@ -4,6 +4,7 @@ import { UsuarioService } from '../servicios/usuario.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CloseDialogComponent } from '../close-dialog/close-dialog.component';
+import { SessionStorageService } from '../servicios/session-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public sessionStorageService: SessionStorageService
   ) {
     this.initializeForm();
   }
@@ -44,28 +46,8 @@ export class LoginComponent implements OnInit {
 
     this.usuarioService.Login(this.loginForm.value).subscribe({
       next: (response: any) => {
+        this.sessionStorageService.setData("usuarioId", response.usuarioId);
         this.router.navigate(['/chat']);
-        // const dialogRef = this.dialog.open(CloseDialogComponent, {
-        //   data: { message: 'Inicio de sesión exitoso' },
-        //   autoFocus: false,
-        // });
-        
-        // dialogRef.afterClosed().subscribe(() => {
-        //   this.router.navigate(['/chat']);
-        // });
-        // dialogRef.afterClosed().subscribe(() => {
-        //   // Forzar el foco en el body para evitar el error
-        //   document.body.focus();
-        
-        //   // Ahora sí redirige al componente Chat
-        //   this.router.navigate(['/chat']);
-        // });
-        // this.dialog.open(CloseDialogComponent, {
-        //   data: { message: 'Inicio de sesión exitoso' }
-        // });
-        // this.router.navigateByUrl('/chat'); 
-        //window.location.href = '/chat';
-        //this.router.navigate(['chat']);
       },
       error: (error: any) => {
         this.dialog.open(CloseDialogComponent, {

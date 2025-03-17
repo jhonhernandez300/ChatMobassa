@@ -1,28 +1,8 @@
 [
   {
     "ContainingType": "MiProyectoAPI.Controllers.MensajesController",
-    "Method": "GetMensajes",
-    "RelativePath": "api/mensajes",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[MiProyectoAPI.Models.Mensaje, MiProyectoAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "MiProyectoAPI.Controllers.MensajesController",
-    "Method": "PostMensaje",
-    "RelativePath": "api/mensajes",
+    "Method": "GuardarMensaje",
+    "RelativePath": "api/mensajes/GuardarMensaje",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -36,6 +16,26 @@
     "ReturnTypes": [
       {
         "Type": "MiProyectoAPI.Models.Mensaje",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MiProyectoAPI.Controllers.MensajesController",
+    "Method": "ObtenerMensajes",
+    "RelativePath": "api/mensajes/ObtenerMensajes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MiProyectoAPI.Models.Mensaje, MiProyectoAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
