@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MiProyectoAPI.Models;
+using System.Threading;
 
 namespace MiProyectoAPI.Data
 {
@@ -18,6 +19,13 @@ namespace MiProyectoAPI.Data
             modelBuilder.Entity<Usuario>()
             .Property(u => u.UsuarioId)
             .ValueGeneratedOnAdd();
+
+            //Relaciones
+            modelBuilder.Entity<Mensaje>()
+                .HasOne(df => df.Usuario)
+                .WithMany(f => f.Mensajes)
+                .HasForeignKey(df => df.UsuarioId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             //Seeds
             modelBuilder.Entity<Usuario>().HasData(

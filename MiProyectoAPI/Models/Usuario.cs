@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using System.Threading;
 
 namespace MiProyectoAPI.Models
 {
@@ -12,5 +14,8 @@ namespace MiProyectoAPI.Models
         public required string Password { get; set; }
         public required string Apodo { get; set; }
         public required string ImagenURL { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Mensaje>? Mensajes { get; set; }
     }
 }

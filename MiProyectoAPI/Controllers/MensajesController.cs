@@ -18,18 +18,18 @@ namespace MiProyectoAPI.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Mensaje>>> GetMensajes()
+        [HttpGet("ObtenerMensajes")]
+        public async Task<ActionResult<IEnumerable<Mensaje>>> ObtenerMensajes()
         {
             return await _context.Mensajes.ToListAsync();
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Mensaje>> PostMensaje(Mensaje mensaje)
+        [HttpPost("GuardarMensaje")]
+        public async Task<ActionResult<Mensaje>> GuardarMensaje(Mensaje mensaje)
         {
             _context.Mensajes.Add(mensaje);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetMensajes), new { id = mensaje.Id }, mensaje);
+            return CreatedAtAction(nameof(ObtenerMensajes), new { id = mensaje.Id }, mensaje);
         }
     }
 }
