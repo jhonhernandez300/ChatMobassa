@@ -85,6 +85,7 @@ export class RegistrarseComponent implements OnInit, AfterViewInit {
             data: { message: "Usuario creado" } 
           });
           this.myForm.reset();
+          this.router.navigate(['/chat']);
       },
       error: (error: any) => {          
           this.dialog.open(CloseDialogComponent, {            

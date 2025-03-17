@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|c:\\users\\jhon\\onedrive\\documentos\\pruebas empresas\\chat\\devmobassa\\miproyectoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|c:\\users\\jhon\\onedrive\\documentos\\pruebas empresas\\chat\\devmobassa\\miproyectoapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|c:\\users\\jhon\\onedrive\\documentos\\pruebas empresas\\chat\\devmobassa\\miproyectoapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|c:\\users\\jhon\\onedrive\\documentos\\pruebas empresas\\chat\\devmobassa\\miproyectoapi\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|solutionrelative:controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|c:\\users\\jhon\\onedrive\\documentos\\pruebas empresas\\chat\\devmobassa\\miproyectoapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|c:\\users\\jhon\\onedrive\\documentos\\pruebas empresas\\chat\\devmobassa\\miproyectoapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|c:\\users\\jhon\\onedrive\\documentos\\pruebas empresas\\chat\\devmobassa\\miproyectoapi\\models\\usuariocorto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB4BCA8A-70F7-4CFE-B85A-A0913267B6AF}|MiProyectoAPI.csproj|solutionrelative:models\\usuariocorto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,64 +26,41 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAiwB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-16T21:22:45.668Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAIwBYAAAAeAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "UsuarioCorto.cs",
+              "DocumentMoniker": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Models\\UsuarioCorto.cs",
+              "RelativeDocumentMoniker": "Models\\UsuarioCorto.cs",
+              "ToolTip": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Models\\UsuarioCorto.cs",
+              "RelativeToolTip": "Models\\UsuarioCorto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T21:21:02.441Z",
+              "WhenOpened": "2025-03-17T00:32:26.858Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Models\\Usuario.cs",
-              "RelativeToolTip": "Models\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T20:05:29.582Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Data\\AppDbContext.cs",
               "RelativeToolTip": "Data\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABwAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T23:03:39Z"
+              "WhenOpened": "2025-03-17T00:31:36.712Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "UsuariosController.cs",
               "DocumentMoniker": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Controllers\\UsuariosController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsuariosController.cs",
               "ToolTip": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\Controllers\\UsuariosController.cs",
               "RelativeToolTip": "Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAIwCEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T23:00:34.325Z",
+              "WhenOpened": "2025-03-17T00:24:06.868Z",
               "EditorCaption": ""
             }
           ]

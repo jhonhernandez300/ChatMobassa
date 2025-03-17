@@ -1,0 +1,26 @@
+.custom-card {
+    max-width: 500px; /* Ancho máximo del card */
+    margin: 0 auto; /* Centrar el card */
+  }
+  
+  .full-width {
+    width: 100%; /* Que los textboxes ocupen todo el ancho */
+  }
+  
+  mat-card-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .custom-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaciado entre los campos */
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  [aria-hidden="true"] {
+    display: none;
+  }

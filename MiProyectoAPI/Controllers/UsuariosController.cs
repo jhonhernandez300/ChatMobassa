@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MiProyectoAPI.Data;
 using MiProyectoAPI.Models;
 
@@ -13,6 +15,25 @@ namespace MiProyectoAPI.Controllers
         public UsuariosController(AppDbContext context)
         {
             _context = context;
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] UsuarioCorto usuarioCorto)
+        {
+            if (usuarioCorto == null)
+            {
+                return BadRequest("Los datos de acceso son nulos.");
+            }
+
+            var usuarioEncontrado = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Correo == usuarioCorto.Correo && u.Password == usuarioCorto.Password);
+
+            if (usuarioEncontrado == null)
+            {
+                return Unauthorized("Correo o contraseña incorrectos.");
+            }
+
+            return Ok(new { message = "Login exitoso", usuarioId = usuarioEncontrado.UsuarioId, usuarioEncontrado.Nombre });
         }
 
         [HttpPost("GuardarUsuario")]

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { iUsuario } from '../Interfaces/iUsuario';
+import { iUsuarioCorto } from '../Interfaces/iUsuarioCorto';
 //import { iLogin } from '../interfaces/iLogin';
 
 
@@ -31,6 +32,16 @@ export class UsuarioService {
         })
       );
   }
+
+  Login(login: iUsuarioCorto): Observable<any> {            
+    return this.http.post(`${this.apiUrl}/Login`, login).pipe(
+      catchError(error => {
+          console.error('Request error:', error);
+          const errorMessage = error?.error?.message || 'Error en la solicitud';
+          return throwError(() => new Error(errorMessage));
+      })    
+    );    
+  }
   
 
   // ActualizarUsuario(usuario: iUsuarioConRolDTO): Observable<any> {             
@@ -42,15 +53,7 @@ export class UsuarioService {
   //   );    
   // } 
   
-  // Login(login: iLogin): Observable<any> {            
-  //   return this.http.post(`${this.apiUrl}/Login`, login).pipe(
-  //     catchError(error => {
-  //         console.error('Request error:', error);
-  //         const errorMessage = error?.error?.message || 'Error en la solicitud';
-  //         return throwError(() => new Error(errorMessage));
-  //     })    
-  //   );    
-  // }
+  
 
   // BorrarUsuario(id: number): Observable<any> {             
   //   return this.http.delete(`${this.apiUrl}/BorrarUsuario` + "/" + id).pipe(

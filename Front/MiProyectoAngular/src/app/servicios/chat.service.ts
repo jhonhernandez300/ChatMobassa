@@ -10,7 +10,7 @@ export class ChatService {
 
   private hubConnection!: HubConnection;
   private mensajesSubject = new Subject<{ usuario: string, mensaje: string }>();
-  private apiUrl = 'http://localhost:5181/api/mensajes';
+  private apiUrl = 'https://localhost:7276/api/mensajes';
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +25,7 @@ export class ChatService {
 
   iniciarConexion() {
     this.hubConnection = new HubConnectionBuilder()
-      .withUrl('http://localhost:5 181/chathub')
+      .withUrl('https://localhost:7276/chathub')
       .build();
 
     this.hubConnection.start().catch(err => console.error('Error al conectar SignalR', err));
