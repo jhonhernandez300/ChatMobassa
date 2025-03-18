@@ -5,17 +5,18 @@ using MiProyectoAPI.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString")));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString")));
 
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Configurar Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configuración de CORS
 var corsPolicyName = "AllowFrontend";
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(corsPolicyName,
@@ -25,6 +26,12 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader()
             .AllowCredentials()); // Permitir credenciales como cookies o autenticación
 });
+
+// Registrar IHttpContextAccessor para acceder al contexto HTTP en servicios
+builder.Services.AddHttpContextAccessor();
+
+// Registrar ChatHub como un servicio singleton si necesitas inyectarlo en otros servicios
+builder.Services.AddSingleton<ChatHub>();
 
 var app = builder.Build();
 

@@ -60,15 +60,10 @@
   
           <div class="row custom-row mt-4">
             <div class="col">
-              <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Imagen URL</mat-label>
-                <input matInput formControlName="imagenURL" placeholder="Imagen URL">
-                <mat-error *ngIf="submitted && form['imagenURL'].errors">
-                  <div *ngIf="form['imagenURL']?.errors?.['required']">Requerido</div>
-                  <div *ngIf="form['imagenURL']?.errors?.['minlength']">Al menos 4 caracteres</div>
-                  <div *ngIf="form['imagenURL']?.errors?.['maxlength']">Hasta 60 caracteres</div>
-                </mat-error>
-              </mat-form-field>
+              <div class="full-width">
+                <label for="fileUpload">Imagen</label>
+                <input type="file" id="fileUpload" (change)="onFileSelected($event)">
+              </div>
             </div>
           </div>
   

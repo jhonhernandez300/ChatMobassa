@@ -63,8 +63,7 @@ namespace MiProyectoAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagenURL")
-                        .IsRequired()
+                    b.Property<string>("ImagenRuta")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
@@ -85,7 +84,7 @@ namespace MiProyectoAPI.Migrations
                             UsuarioId = 1,
                             Apodo = "James",
                             Correo = "james@gmail.com",
-                            ImagenURL = "James1",
+                            ImagenRuta = "James1",
                             Nombre = "James",
                             Password = "James0101*"
                         },
@@ -94,7 +93,7 @@ namespace MiProyectoAPI.Migrations
                             UsuarioId = 2,
                             Apodo = "Radamel",
                             Correo = "radamel@gmail.com",
-                            ImagenURL = "Radamel1",
+                            ImagenRuta = "Radamel1",
                             Nombre = "Radamel",
                             Password = "Radamel0101*"
                         });

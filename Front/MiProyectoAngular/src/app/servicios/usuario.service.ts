@@ -33,15 +33,14 @@ export class UsuarioService {
       );
   }  
 
-  GuardarUsuario(usuario: iUsuario): Observable<iUsuario[]> {
-    return this.http.post<iUsuario[]>(`${this.apiUrl}/GuardarUsuario`, usuario, this.httpOptions)
-      .pipe(
-        catchError(error => {
-          console.error('Error:', error);
-          return throwError(error);
-        })
-      );
-  }
+  GuardarUsuario(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/GuardarUsuario`, formData).pipe(
+      catchError(error => {
+        console.error('Error al guardar usuario:', error);
+        return throwError(error);
+      })
+    );
+  }  
 
   Login(login: iUsuarioCorto): Observable<any> {            
     return this.http.post(`${this.apiUrl}/Login`, login).pipe(

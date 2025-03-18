@@ -13,7 +13,7 @@ namespace MiProyectoAPI.Models
         public required string Correo { get; set; }
         public required string Password { get; set; }
         public required string Apodo { get; set; }
-        public required string ImagenURL { get; set; }
+        public string? ImagenRuta { get; set; }
 
         [JsonIgnore]
         public ICollection<Mensaje>? Mensajes { get; set; }

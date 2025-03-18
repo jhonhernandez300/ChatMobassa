@@ -17,6 +17,7 @@ export class RegistrarseComponent implements OnInit, AfterViewInit {
   submitted = false; 
   selectedUsuarioId!: number;
   selectedRolId: number = 0;  
+  selectedFile!: File;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -69,32 +70,53 @@ export class RegistrarseComponent implements OnInit, AfterViewInit {
     this.myForm.reset();
   }
 
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+  
   public async onSubmit(): Promise<void> {
-    this.submitted = true;         
-
-    if (this.myForm.invalid) {      
-      this.dialog.open(CloseDialogComponent, {            
-        data: { message: "Revisa los valores del formulario" } 
+    this.submitted = true;
+  
+    if (this.myForm.invalid) {
+      this.dialog.open(CloseDialogComponent, {
+        data: { message: "Revisa los valores del formulario" }
       });
       return;
-    }            
-        
-    this.usuarioService.GuardarUsuario(this.myForm.value).subscribe({
-      next: (response: any) => {          
-          this.dialog.open(CloseDialogComponent, {            
-            data: { message: "Usuario creado" } 
-          });
-          this.myForm.reset();
-          this.router.navigate(['/chat']);
-      },
-      error: (error: any) => {          
-          this.dialog.open(CloseDialogComponent, {            
-            data: { message: error } 
-          });
+    }
+  
+    const formData = new FormData();
+  
+    //Forzar UsuarioId a 0 para que se autoincremente en el backend
+    formData.append('UsuarioId', '0');
+  
+    //Cambio: Manejo seguro de los valores del formulario
+    Object.keys(this.myForm.value).forEach(key => {
+      if (this.myForm.value[key] !== null && this.myForm.value[key] !== undefined) {
+        formData.append(key, this.myForm.value[key]);
       }
-  });     
+    });
+  
+    //Agregar imagen si el usuario ha seleccionado una
+    if (this.selectedFile) {
+      formData.append('imagen', this.selectedFile);
+    }
+  
+    this.usuarioService.GuardarUsuario(formData).subscribe({
+      next: (response: any) => {
+        this.dialog.open(CloseDialogComponent, {
+          data: { message: "Usuario creado" }
+        });
+        this.myForm.reset();
+        this.router.navigate(['/chat']);
+      },
+      error: (error: any) => {
+        this.dialog.open(CloseDialogComponent, {
+          data: { message: error }
+        });
+      }
+    });
   }
-
+  
   get form(): { [key: string]: AbstractControl; }
   {
       return this.myForm.controls;

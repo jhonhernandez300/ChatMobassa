@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MiProyectoAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250317173125_i")]
+    [Migration("20250318172726_i")]
     partial class i
     {
         /// <inheritdoc />
@@ -66,8 +66,7 @@ namespace MiProyectoAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagenURL")
-                        .IsRequired()
+                    b.Property<string>("ImagenRuta")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
@@ -88,7 +87,7 @@ namespace MiProyectoAPI.Migrations
                             UsuarioId = 1,
                             Apodo = "James",
                             Correo = "james@gmail.com",
-                            ImagenURL = "James1",
+                            ImagenRuta = "James1",
                             Nombre = "James",
                             Password = "James0101*"
                         },
@@ -97,7 +96,7 @@ namespace MiProyectoAPI.Migrations
                             UsuarioId = 2,
                             Apodo = "Radamel",
                             Correo = "radamel@gmail.com",
-                            ImagenURL = "Radamel1",
+                            ImagenRuta = "Radamel1",
                             Nombre = "Radamel",
                             Password = "Radamel0101*"
                         });

@@ -44,9 +44,44 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "usuario",
-        "Type": "MiProyectoAPI.Models.Usuario",
-        "IsRequired": true
+        "Name": "UsuarioId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Correo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apodo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImagenRuta",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Mensajes",
+        "Type": "System.Collections.Generic.ICollection\u00601[[MiProyectoAPI.Models.Mensaje, MiProyectoAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "imagen",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

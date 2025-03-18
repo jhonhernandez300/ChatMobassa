@@ -23,7 +23,7 @@ namespace MiProyectoAPI.Migrations
                     Correo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Apodo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImagenURL = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ImagenRuta = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -53,7 +53,7 @@ namespace MiProyectoAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
-                columns: new[] { "UsuarioId", "Apodo", "Correo", "ImagenURL", "Nombre", "Password" },
+                columns: new[] { "UsuarioId", "Apodo", "Correo", "ImagenRuta", "Nombre", "Password" },
                 values: new object[,]
                 {
                     { 1, "James", "james@gmail.com", "James1", "James", "James0101*" },

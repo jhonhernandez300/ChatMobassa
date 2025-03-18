@@ -65,7 +65,7 @@ namespace MiProyectoAPI.Controllers
         }
 
         [HttpPost("GuardarUsuario")]
-        public async Task<IActionResult> GuardarUsuario([FromBody] Usuario usuario)
+        public async Task<IActionResult> GuardarUsuario([FromForm] Usuario usuario, IFormFile? imagen)
         {
             if (usuario == null)
             {
@@ -77,6 +77,29 @@ namespace MiProyectoAPI.Controllers
                 // Forzar que UsuarioId sea 0 para que se autoincremente
                 usuario.UsuarioId = 0;
 
+                if (imagen != null && imagen.Length > 0)
+                {
+                    // Crear la carpeta si no existe
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenes");
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+
+                    // Generar un nombre único para la imagen
+                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(imagen.FileName)}";
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+
+                    // Guardar la imagen en el servidor
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imagen.CopyToAsync(fileStream);
+                    }
+
+                    // Guardar la ruta relativa en la base de datos
+                    usuario.ImagenRuta = $"/imagenes/{fileName}";
+                }
+
                 _context.Usuarios.Add(usuario);
                 await _context.SaveChangesAsync();
 
@@ -87,6 +110,7 @@ namespace MiProyectoAPI.Controllers
                 return StatusCode(500, $"Error al guardar el usuario: {ex.Message}");
             }
         }
+
 
     }
 }
