@@ -31,7 +31,7 @@ export class ChatComponent implements OnInit {
     this.usuarioId = this.sessionStorageService.getData("usuarioId");
 
     if (this.usuarioId) {      
-      //console.log(this.usuario);
+      console.log(this.usuarioId);
       this.obtenerNombreUsuario();
       this.cargarMensajes();
       this.chatService.iniciarConexion();

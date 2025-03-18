@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CloseDialogComponent } from '../close-dialog/close-dialog.component';
 import { iUsuario } from '../Interfaces/iUsuario';
 import { AfterViewInit } from '@angular/core';
+import { SessionStorageService } from '../servicios/session-storage.service';
 
 @Component({
   selector: 'app-registrarse',
@@ -23,7 +24,8 @@ export class RegistrarseComponent implements OnInit, AfterViewInit {
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public sessionStorageService: SessionStorageService
   ) {
     this.initializeForm();
   }
@@ -89,7 +91,7 @@ export class RegistrarseComponent implements OnInit, AfterViewInit {
     //Forzar UsuarioId a 0 para que se autoincremente en el backend
     formData.append('UsuarioId', '0');
   
-    //Cambio: Manejo seguro de los valores del formulario
+    //Manejo seguro de los valores del formulario
     Object.keys(this.myForm.value).forEach(key => {
       if (this.myForm.value[key] !== null && this.myForm.value[key] !== undefined) {
         formData.append(key, this.myForm.value[key]);
@@ -106,8 +108,8 @@ export class RegistrarseComponent implements OnInit, AfterViewInit {
         this.dialog.open(CloseDialogComponent, {
           data: { message: "Usuario creado" }
         });
-        this.myForm.reset();
-        this.router.navigate(['/chat']);
+        this.myForm.reset();        
+        this.router.navigate(['/login']);
       },
       error: (error: any) => {
         this.dialog.open(CloseDialogComponent, {
