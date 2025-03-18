@@ -12,7 +12,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class ChatComponent implements OnInit {  
   mensajes: iMensajeConUsuarioNombre[] = []; // ✅ Ahora usa la nueva interfaz
-  usuario: number = 0;
+  usuarioId: number = 0;
   usuarioNombre: string = '';
   inputMensaje: string = '';
 
@@ -28,10 +28,9 @@ export class ChatComponent implements OnInit {
   }
 
   obtenerUsuario() {
-    const usuarioId = this.sessionStorageService.getData("usuarioId");
+    this.usuarioId = this.sessionStorageService.getData("usuarioId");
 
-    if (usuarioId) {
-      this.usuario = usuarioId;
+    if (this.usuarioId) {      
       //console.log(this.usuario);
       this.obtenerNombreUsuario();
       this.cargarMensajes();
@@ -44,7 +43,7 @@ export class ChatComponent implements OnInit {
 
   obtenerNombreUsuario() {
     //console.log(this.usuario);
-    this.usuarioService.ObtenerNombreUsuario(this.usuario).subscribe({      
+    this.usuarioService.ObtenerNombreUsuario(this.usuarioId).subscribe({      
       next: (nombre: string) => this.usuarioNombre = nombre,
       error: (error) => console.error('Error al obtener el nombre del usuario:', error)
     });
@@ -75,10 +74,10 @@ export class ChatComponent implements OnInit {
   enviarMensaje() {
     if (this.inputMensaje.trim()) {
       const nuevoMensaje = {
-        Id: this.usuario, 
+        Id: 0, //En el backend se pone uno autoincrementable 
         Contenido: this.inputMensaje,
         FechaYHora: new Date(),
-        UsuarioId: this.usuario,
+        UsuarioId: this.usuarioId,
         UsuarioNombre: this.usuarioNombre // ✅ Enviamos el nombre del usuario
       };
 

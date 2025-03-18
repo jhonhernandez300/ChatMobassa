@@ -44,26 +44,17 @@ export class ChatService {
       .catch(err => console.error('Error al conectar SignalR', err));
 
     // Escuchar mensajes entrantes
-    this.hubConnection.on('RecibirMensaje', (mensaje: iMensaje) => {
+    this.hubConnection.on('RecibirMensaje', (mensaje: iMensajeConUsuarioNombre) => {
       console.log('Mensaje recibido:', mensaje);
     
-      this.http.get<string>(`${this.apiUrl}/ObtenerNombre/${mensaje.UsuarioId}`).subscribe({
-        next: (usuarioNombre) => {
-          const mensajeConUsuario: iMensajeConUsuarioNombre = { 
-            id: mensaje.Id,  // Asegurar que tenga un id
-            contenido: mensaje.Contenido,  // Asignar correctamente el contenido
-            fechaYHora: mensaje.FechaYHora,  // Asegurar la fecha y hora
-            usuarioId: mensaje.UsuarioId,  // Asegurar el usuarioId
-            usuarioNombre: usuarioNombre  // Agregar el nombre del usuario
-          };
+      if (!mensaje.usuarioId) {
+        console.error('Error: UsuarioId es undefined o null');
+        return;
+      }
     
-          this.mensajesSubject.next(mensajeConUsuario);
-        },
-        error: (error) => {
-          console.error('Error al obtener el nombre del usuario:', error);
-        }
-      });
-    });
+      // Directamente usamos el mensaje sin hacer otra petición HTTP
+      this.mensajesSubject.next(mensaje);
+    });    
   }
 
   obtenerMensajesEnTiempoReal(): Observable<iMensajeConUsuarioNombre> {

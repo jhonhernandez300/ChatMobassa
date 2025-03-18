@@ -32,7 +32,7 @@ namespace MiProyectoAPI.Controllers
                     .Select(u => u.Nombre)
                     .FirstOrDefaultAsync();
 
-                if (usuario == null)
+                if (string.IsNullOrEmpty(usuario)) // Verificar si la respuesta es null o vacía
                 {
                     return NotFound("Usuario no encontrado.");
                 }
