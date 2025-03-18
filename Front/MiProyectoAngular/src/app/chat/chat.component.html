@@ -1,5 +1,6 @@
 <div class="container mt-4">
   <h2 class="text-center">Chat en Tiempo Real</h2>
+
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let msg of mensajes">
       <strong>{{ msg.usuarioNombre }}:</strong> {{ msg.contenido }}  
@@ -7,8 +8,30 @@
       <small class="text-muted">{{ msg.fechaYHora | date: 'short' }}</small>
     </li>
   </ul>
+
   <div class="mt-3">
-    <input [(ngModel)]="inputMensaje" class="form-control" placeholder="Escribe un mensaje">
-    <button (click)="enviarMensaje()" class="btn btn-primary mt-2">Enviar</button>
+    <input [(ngModel)]="inputMensaje" class="form-control" placeholder="Escribe un mensaje">    
   </div>
+
+  <div class="mt-3">
+    <h2>Buscador de GIFs y Videos</h2>
+    <input [(ngModel)]="searchTerm" class="form-control d-inline-block w-auto" placeholder="Escribe tu búsqueda..." />
+    <button class="btn btn-secondary me-2 ms-3" (click)="searchGif()">Buscar GIF</button>
+    <button class="btn btn-success" (click)="searchVideo()">Buscar Video</button>    
+  
+    <div *ngIf="gifUrl" class="mt-3">
+      <h3>Resultado GIF:</h3>
+      <img [src]="gifUrl" alt="GIF encontrado" width="300">
+    </div>
+  
+    <div *ngIf="videoUrl" class="mt-3">
+      <h3>Resultado Video:</h3>
+      <a [href]="videoUrl" target="_blank">Ver luego {{ searchTerm }} en YouTube</a>
+    </div>
+
+    <div class="mt-3">
+      <button (click)="enviarMensaje()" class="btn btn-primary mt-2">Enviar</button>
+    </div>
+  </div>
+
 </div>

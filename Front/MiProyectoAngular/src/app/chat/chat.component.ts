@@ -4,6 +4,7 @@ import { UsuarioService } from '../servicios/usuario.service';
 import { SessionStorageService } from '../servicios/session-storage.service';
 import { iMensajeConUsuarioNombre } from '../Interfaces/iMensajeConUsuarioNombre';
 import { ChangeDetectorRef } from '@angular/core';
+import { ApiServiceService } from '../servicios/api-service.service';
 
 @Component({
   selector: 'app-chat',
@@ -15,12 +16,16 @@ export class ChatComponent implements OnInit {
   usuarioId: number = 0;
   usuarioNombre: string = '';
   inputMensaje: string = '';
+  searchTerm = '';
+  gifUrl: string | null = null;
+  videoUrl: string | null = null;
 
   constructor(
     private chatService: ChatService,
     public sessionStorageService: SessionStorageService,
     private usuarioService: UsuarioService, 
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private apiServiceService: ApiServiceService
   ) {}
 
   ngOnInit() {
@@ -84,5 +89,19 @@ export class ChatComponent implements OnInit {
       this.chatService.enviarMensaje(nuevoMensaje);
       this.inputMensaje = '';
     }
+  }
+
+  searchGif() {
+    this.apiServiceService.getGiphyGif(this.searchTerm).subscribe(response => {
+      this.gifUrl = response.data.length > 0 ? response.data[0].images.original.url : null;
+      this.videoUrl = null;
+    });
+  }
+
+  searchVideo() {
+    this.apiServiceService.getYoutubeVideo(this.searchTerm).subscribe(response => {
+      this.videoUrl = response.items.length > 0 ? `https://www.youtube.com/watch?v=${response.items[0].id.videoId}` : null;
+      this.gifUrl = null;
+    });
   }
 }
