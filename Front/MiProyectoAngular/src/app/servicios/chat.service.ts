@@ -3,20 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { Observable, Subject } from 'rxjs';
 import { iMensaje } from '../Interfaces/iMensaje';
-import { iMensajeConUsuarioNombre } from '../Interfaces/iMensajeConUsuarioNombre';
+import { iMensajeConUsuario } from '../Interfaces/iMensajeConUsuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
   private hubConnection!: HubConnection;
-  private mensajesSubject = new Subject<iMensajeConUsuarioNombre>();
+  private mensajesSubject = new Subject<iMensajeConUsuario>();
   private apiUrl = 'https://localhost:7276/api/mensajes';
 
   constructor(private http: HttpClient) {}
 
-  obtenerMensajes(): Observable<iMensajeConUsuarioNombre[]> {
-    return this.http.get<iMensajeConUsuarioNombre[]>(`${this.apiUrl}/ObtenerMensajes`);
+  obtenerMensajes(): Observable<iMensajeConUsuario[]> {
+    return this.http.get<iMensajeConUsuario[]>(`${this.apiUrl}/ObtenerMensajesConUsuario`);
   }
 
   enviarMensaje(mensaje: iMensaje) {
@@ -38,13 +38,13 @@ export class ChatService {
       .withUrl('https://localhost:7276/chathub')
       .withAutomaticReconnect()
       .build();
-
+  
     this.hubConnection.start()
       .then(() => console.log('Conectado a SignalR'))
       .catch(err => console.error('Error al conectar SignalR', err));
-
+  
     // Escuchar mensajes entrantes
-    this.hubConnection.on('RecibirMensaje', (mensaje: iMensajeConUsuarioNombre) => {
+    this.hubConnection.on('RecibirMensaje', (mensaje: iMensajeConUsuario) => { 
       console.log('Mensaje recibido:', mensaje);
     
       if (!mensaje.usuarioId) {
@@ -55,9 +55,10 @@ export class ChatService {
       // Directamente usamos el mensaje sin hacer otra petición HTTP
       this.mensajesSubject.next(mensaje);
     });    
-  }
+  }  
 
-  obtenerMensajesEnTiempoReal(): Observable<iMensajeConUsuarioNombre> {
+  obtenerMensajesEnTiempoReal(): Observable<iMensajeConUsuario> {
     return this.mensajesSubject.asObservable();
   }
+  
 }

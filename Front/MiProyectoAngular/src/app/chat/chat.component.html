@@ -2,10 +2,17 @@
   <h2 class="text-center">Chat en Tiempo Real</h2>
 
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let msg of mensajes">
-      <strong>{{ msg.usuarioNombre }}:</strong> {{ msg.contenido }}  
-      <br>
-      <small class="text-muted">{{ msg.fechaYHora | date: 'short' }}</small>
+    <li class="list-group-item d-flex align-items-center" *ngFor="let msg of mensajes">
+      <img *ngIf="msg.imagenRuta && msg.imagenRuta.trim() !== ''" 
+     [src]="getImagenUrl(msg.imagenRuta)" 
+     alt="Imagen de usuario"
+     class="rounded-circle me-2" 
+     width="80" height="80">
+      <div>
+        <strong>{{ msg.usuarioNombre }}:</strong> {{ msg.contenido }}  
+        <br>
+        <small class="text-muted">{{ msg.fechaYHora | date: 'short' }}</small>
+      </div>
     </li>
   </ul>
 

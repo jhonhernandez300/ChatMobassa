@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders; // Necesario para servir archivos estáticos
 using MiProyectoAPI.Data;
 using MiProyectoAPI.Hubs;
 
@@ -45,7 +46,20 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors(corsPolicyName);
+
+// Habilitar archivos estáticos desde wwwroot
+app.UseStaticFiles();
+
+// Asegurar que la carpeta "imagenes" dentro de wwwroot se sirva correctamente
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenes")),
+    RequestPath = "/imagenes" // Esto permite acceder a imágenes desde "/imagenes"
+});
+
 app.UseAuthorization();
+
 app.MapHub<ChatHub>("/chathub");
 
 app.MapControllers();

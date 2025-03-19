@@ -4,8 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { iUsuario } from '../Interfaces/iUsuario';
 import { iUsuarioCorto } from '../Interfaces/iUsuarioCorto';
-//import { iLogin } from '../interfaces/iLogin';
-
 
 @Injectable({
   providedIn: 'root'
@@ -21,17 +19,7 @@ export class UsuarioService {
       'Content-Type': 'application/json'
     }),
     withCredentials: true
-  };
-
-  ObtenerNombreUsuario(usuarioId: number): Observable<string> {
-    return this.http.get(`${this.apiUrl}/ObtenerNombre/${usuarioId}`, { responseType: 'text' }) // 👀 Forzamos texto
-      .pipe(
-        catchError(error => {
-          console.error('Error al obtener el nombre del usuario:', error);
-          return throwError(() => new Error('Error al obtener el nombre del usuario'));
-        })
-      );
-  }  
+  };  
 
   GuardarUsuario(formData: FormData): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/GuardarUsuario`, formData).pipe(

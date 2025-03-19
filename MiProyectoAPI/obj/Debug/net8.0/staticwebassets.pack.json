@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\6098986b-d7fc-4c56-b4b1-eb502ef08f21.png",
+      "PackagePath": "staticwebassets\\imagenes\\6098986b-d7fc-4c56-b4b1-eb502ef08f21.png"
+    },
+    {
+      "Id": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\9c514ba5-4e38-46cc-8946-5f3cbc2bdd40.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\9c514ba5-4e38-46cc-8946-5f3cbc2bdd40.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\eaf29758-1c02-42d8-b6ef-0fb2457f54cf.png",
+      "PackagePath": "staticwebassets\\imagenes\\eaf29758-1c02-42d8-b6ef-0fb2457f54cf.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MiProyectoAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.MiProyectoAPI.props",
+      "PackagePath": "build\\MiProyectoAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.MiProyectoAPI.props",
+      "PackagePath": "buildMultiTargeting\\MiProyectoAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.MiProyectoAPI.props",
+      "PackagePath": "buildTransitive\\MiProyectoAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

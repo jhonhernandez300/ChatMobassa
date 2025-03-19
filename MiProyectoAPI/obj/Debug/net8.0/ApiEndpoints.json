@@ -36,6 +36,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MiProyectoAPI.Controllers.MensajesController",
+    "Method": "ObtenerMensajesConUsuario",
+    "RelativePath": "api/mensajes/ObtenerMensajesConUsuario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MiProyectoAPI.Controllers.UsuariosController",
     "Method": "GuardarUsuario",
     "RelativePath": "api/Usuarios/GuardarUsuario",
@@ -97,22 +107,6 @@
       {
         "Name": "usuarioCorto",
         "Type": "MiProyectoAPI.Models.UsuarioCorto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MiProyectoAPI.Controllers.UsuariosController",
-    "Method": "ObtenerNombre",
-    "RelativePath": "api/Usuarios/ObtenerNombre/{usuarioId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "usuarioId",
-        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

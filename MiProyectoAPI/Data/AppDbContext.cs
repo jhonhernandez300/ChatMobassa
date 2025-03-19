@@ -36,7 +36,7 @@ namespace MiProyectoAPI.Data
                      Correo = "james@gmail.com",
                      Password = "James0101*",
                      Apodo = "James",
-                     ImagenRuta = "James1"                     
+                     ImagenRuta = ""                     
                  },
                  new Usuario
                  {
@@ -45,7 +45,7 @@ namespace MiProyectoAPI.Data
                      Correo = "radamel@gmail.com",
                      Password = "Radamel0101*",
                      Apodo = "Radamel",
-                     ImagenRuta = "Radamel1"
+                     ImagenRuta = ""
                  }
             );
 

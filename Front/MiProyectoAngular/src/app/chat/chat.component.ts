@@ -5,20 +5,22 @@ import { SessionStorageService } from '../servicios/session-storage.service';
 import { iMensajeConUsuarioNombre } from '../Interfaces/iMensajeConUsuarioNombre';
 import { ChangeDetectorRef } from '@angular/core';
 import { ApiServiceService } from '../servicios/api-service.service';
+import { iMensajeConUsuario } from '../Interfaces/iMensajeConUsuario';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {  
-  mensajes: iMensajeConUsuarioNombre[] = []; // ✅ Ahora usa la nueva interfaz
+export class ChatComponent implements OnInit {    
   usuarioId: number = 0;
   usuarioNombre: string = '';
   inputMensaje: string = '';
   searchTerm = '';
+  imagenRuta: string | null = null;
   gifUrl: string | null = null;
   videoUrl: string | null = null;
+  mensajes: iMensajeConUsuario[] = [];
 
   constructor(
     private chatService: ChatService,
@@ -26,7 +28,7 @@ export class ChatComponent implements OnInit {
     private usuarioService: UsuarioService, 
     private cdr: ChangeDetectorRef,
     private apiServiceService: ApiServiceService
-  ) {}
+  ) {}  
 
   ngOnInit() {
     this.obtenerUsuario();
@@ -36,30 +38,29 @@ export class ChatComponent implements OnInit {
     this.usuarioId = this.sessionStorageService.getData("usuarioId");
 
     if (this.usuarioId) {      
-      console.log(this.usuarioId);
-      this.obtenerNombreUsuario();
+      console.log(this.usuarioId);      
       this.cargarMensajes();
+      
       this.chatService.iniciarConexion();
       this.escucharMensajesEnTiempoReal();
     } else {
       console.error('No se encontró el ID del usuario en sessionStorage.');
     }
-  }
+  } 
 
-  obtenerNombreUsuario() {
-    //console.log(this.usuario);
-    this.usuarioService.ObtenerNombreUsuario(this.usuarioId).subscribe({      
-      next: (nombre: string) => this.usuarioNombre = nombre,
-      error: (error) => console.error('Error al obtener el nombre del usuario:', error)
-    });
+  getImagenUrl(nombreArchivo: string | null): string {
+    if (!nombreArchivo || nombreArchivo.trim() === '') {
+      return 'assets/default-user.png'; // Imagen por defecto si no hay imagen
+    }
+    return `https://localhost:7276/imagenes/${nombreArchivo}`;
   }
 
   cargarMensajes() {
-    this.chatService.obtenerMensajes().subscribe({      
-      next: (mensajes: iMensajeConUsuarioNombre[]) => {
+    this.chatService.obtenerMensajes().subscribe({
+      next: (mensajes: iMensajeConUsuario[]) => {
         console.log('Mensajes recibidos:', mensajes);
         this.mensajes = mensajes;
-        this.cdr.detectChanges();  // Forzar actualización de la vista
+        this.cdr.detectChanges(); // Forzar actualización de la vista
       },
       error: (error) => console.error('Error al obtener los mensajes:', error)
     });

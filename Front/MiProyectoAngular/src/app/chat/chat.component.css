@@ -3,3 +3,9 @@ img {
     height: auto; /* Mantiene la proporción */
     border-radius: 10px; 
   }
+
+  .user-img {
+    width: 80px; /* Tamaño pequeño */
+    height: 80px;
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+  }

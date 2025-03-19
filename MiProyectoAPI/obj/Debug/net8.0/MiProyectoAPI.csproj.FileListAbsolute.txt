@@ -167,3 +167,4 @@ C:\Users\jhon\OneDrive\Documentos\Pruebas empresas\Chat\DevMobassa\MiProyectoAPI
 C:\Users\jhon\OneDrive\Documentos\Pruebas empresas\Chat\DevMobassa\MiProyectoAPI\bin\Debug\net8.0\MiProyectoAPI.pdb
 C:\Users\jhon\OneDrive\Documentos\Pruebas empresas\Chat\DevMobassa\MiProyectoAPI\obj\Debug\net8.0\MiProyectoAPI.genruntimeconfig.cache
 C:\Users\jhon\OneDrive\Documentos\Pruebas empresas\Chat\DevMobassa\MiProyectoAPI\obj\Debug\net8.0\ref\MiProyectoAPI.dll
+C:\Users\jhon\OneDrive\Documentos\Pruebas empresas\Chat\DevMobassa\MiProyectoAPI\bin\Debug\net8.0\MiProyectoAPI.staticwebassets.runtime.json

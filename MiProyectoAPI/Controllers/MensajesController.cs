@@ -18,6 +18,25 @@ namespace MiProyectoAPI.Controllers
             _context = context;
         }
 
+        [HttpGet("ObtenerMensajesConUsuario")]
+        public async Task<IActionResult> ObtenerMensajesConUsuario()
+        {
+            var mensajes = await _context.Mensajes
+                .Include(m => m.Usuario)
+                .Select(m => new MensajeConUsuarioDTO
+                {
+                    Id = m.Id,
+                    Contenido = m.Contenido,
+                    FechaYHora = m.FechaYHora,
+                    UsuarioId = m.UsuarioId,
+                    UsuarioNombre = m.Usuario!.Nombre,
+                    ImagenRuta = m.Usuario!.ImagenRuta
+                })
+                .ToListAsync();
+
+            return Ok(mensajes);
+        }
+
         [HttpGet("ObtenerMensajes")]
         public async Task<IActionResult> ObtenerMensajes()
         {
