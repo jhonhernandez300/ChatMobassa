@@ -11,23 +11,23 @@ En el front:
 * Bootstrap 5.3.3
 * Node js 20.14.0
 
-Configuración
-Borrar el contenido de la carpeta Migrations
-En appsettings.json modificar Data Source por el nombre de su servidor de SQL, si usa usuario y contraseña, incluirlos:
-ConnectionString": "Data Source=localhost\\SQLEXPRESS; Initial catalog=MiProyectoAPI;Integrated Security=true; TrustServerCertificate=True;"
+Configuración  
+Borrar el contenido de la carpeta Migrations  
+En appsettings.json modificar Data Source por el nombre de su servidor de SQL, si usa usuario y contraseña, incluirlos:  
+ConnectionString": "Data Source=localhost\\SQLEXPRESS; Initial catalog=MiProyectoAPI;Integrated Security=true; TrustServerCertificate=True;"  
 
-Abrir la consola del administrador de paquetes y ejecutar estos dos comandos:
-add-migration inicio
-update-database
+Abrir la consola del administrador de paquetes y ejecutar estos dos comandos:  
+add-migration inicio  
+update-database  
 
-Al correr el backend el url le mostrará el número de un puerto, copiarlo y en el front cambiarlo en estos archivos:
-chat.service.ts
-usuario.service.ts
-Haga el cambio aquí
-'https://localhost:7276/api/Usuarios'; 
+Al correr el backend el url le mostrará el número de un puerto, copiarlo y en el front cambiarlo en estos archivos:  
+chat.service.ts  
+usuario.service.ts  
+Haga el cambio aquí  
+'https://localhost:7276/api/Usuarios';   
 
-En una terminal para el front ejecute:
-ng serve -o
+En una terminal para el front ejecute:  
+ng serve -o  
 
-Regístrese y luego logueese.
+Regístrese y luego logueese.  
 A continuación podrá introducir mensajes en el chat junto con enlaces de vídeos de youtube o gifs animados.
