@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4743/ON8x1c/vf/tyQDLUUqHzt19j0yX2FsASzNq23g=",
+  "Hash": "njIuiZeb5xHOYWmNYhg2ZIUYiteoylejIbqqS/m1HJQ=",
   "Source": "MiProyectoAPI",
   "BasePath": "_content/MiProyectoAPI",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imagenes\\f9373142-93fe-4f74-835d-948a9d25c394.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\fd472061-55e9-4e58-846c-2ab9f11ae01f.jpeg",
+      "SourceId": "MiProyectoAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\",
+      "BasePath": "_content/MiProyectoAPI",
+      "RelativePath": "imagenes/fd472061-55e9-4e58-846c-2ab9f11ae01f.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\fd472061-55e9-4e58-846c-2ab9f11ae01f.jpeg"
     }
   ]
 }

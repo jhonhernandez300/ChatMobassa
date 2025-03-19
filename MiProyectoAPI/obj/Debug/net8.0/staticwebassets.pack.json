@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\imagenes\\f9373142-93fe-4f74-835d-948a9d25c394.jpeg"
     },
     {
+      "Id": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\fd472061-55e9-4e58-846c-2ab9f11ae01f.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\fd472061-55e9-4e58-846c-2ab9f11ae01f.jpeg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MiProyectoAPI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

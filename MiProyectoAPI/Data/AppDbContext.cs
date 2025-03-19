@@ -25,29 +25,7 @@ namespace MiProyectoAPI.Data
                 .HasOne(df => df.Usuario)
                 .WithMany(f => f.Mensajes)
                 .HasForeignKey(df => df.UsuarioId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            //Seeds
-            modelBuilder.Entity<Usuario>().HasData(
-                 new Usuario
-                 {
-                     UsuarioId = 1,
-                     Nombre = "James",
-                     Correo = "james@gmail.com",
-                     Password = "James0101*",
-                     Apodo = "James",
-                     ImagenRuta = ""                     
-                 },
-                 new Usuario
-                 {
-                     UsuarioId = 2,
-                     Nombre = "Radamel",
-                     Correo = "radamel@gmail.com",
-                     Password = "Radamel0101*",
-                     Apodo = "Radamel",
-                     ImagenRuta = ""
-                 }
-            );
+                .OnDelete(DeleteBehavior.Cascade);            
 
             base.OnModelCreating(modelBuilder);
         }
