@@ -19,19 +19,21 @@ export class ChatService {
     return this.http.get<iMensajeConUsuario[]>(`${this.apiUrl}/ObtenerMensajesConUsuario`);
   }
 
-  enviarMensaje(mensaje: iMensaje) {
-    mensaje.UsuarioId = Number(mensaje.UsuarioId);    
-
-    this.http.post<iMensaje>(`${this.apiUrl}/GuardarMensaje`, mensaje).subscribe({
+  enviarMensaje(mensaje: iMensajeConUsuario) {
+    console.log(mensaje);
+    mensaje.usuarioId = Number(mensaje.usuarioId);
+    mensaje.fechaYHora = new Date();
+  
+    this.http.post<iMensajeConUsuario>(`${this.apiUrl}/GuardarMensaje`, mensaje).subscribe({
       next: () => console.log('Mensaje guardado correctamente'),
       error: err => console.error('Error en la API:', err)
     });
-
+  
     if (this.hubConnection) {
       this.hubConnection.invoke('EnviarMensaje', mensaje)
         .catch(err => console.error('Error al enviar mensaje a SignalR:', err));
     }
-  }
+  }  
 
   iniciarConexion() {
     this.hubConnection = new HubConnectionBuilder()
@@ -44,8 +46,7 @@ export class ChatService {
       .catch(err => console.error('Error al conectar SignalR', err));
   
     // Escuchar mensajes entrantes
-    this.hubConnection.on('RecibirMensaje', (mensaje: iMensajeConUsuario) => { 
-      console.log('Mensaje recibido:', mensaje);
+    this.hubConnection.on('RecibirMensaje', (mensaje: iMensajeConUsuario) => {       
     
       if (!mensaje.usuarioId) {
         console.error('Error: UsuarioId es undefined o null');

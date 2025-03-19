@@ -34,41 +34,16 @@ namespace MiProyectoAPI.Hubs
             await base.OnConnectedAsync();
         }
 
-        public async Task EnviarMensaje(Mensaje mensaje)
+        public async Task EnviarMensaje(MensajeConUsuarioDTO mensajeDto)
         {
-            if (mensaje == null || mensaje.UsuarioId <= 0 || string.IsNullOrWhiteSpace(mensaje.Contenido))
+            if (mensajeDto == null || mensajeDto.UsuarioId <= 0 || string.IsNullOrWhiteSpace(mensajeDto.Contenido))
             {
                 throw new ArgumentException("El mensaje recibido no es válido.");
             }
 
-            // 🔹 Cambio: Crear un alcance (scope) para obtener una instancia de `AppDbContext`
-            using (var scope = _scopeFactory.CreateScope())
-            {
-                var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-
-                // Obtener el nombre del usuario antes de enviarlo
-                var usuario = await dbContext.Usuarios
-                    .Where(u => u.UsuarioId == mensaje.UsuarioId)
-                    .Select(u => u.Nombre)
-                    .FirstOrDefaultAsync();
-
-                if (usuario == null)
-                {
-                    throw new ArgumentException("Usuario no encontrado.");
-                }
-
-                // Crear DTO con el nombre del usuario
-                var mensajeDto = new MensajeConUsuarioNombreDto
-                {
-                    id = mensaje.Id,
-                    contenido = mensaje.Contenido,
-                    fechaYHora = mensaje.FechaYHora,
-                    usuarioId = mensaje.UsuarioId,
-                    usuarioNombre = usuario // Agregar el nombre
-                };
-
-                await Clients.All.SendAsync("RecibirMensaje", mensajeDto);
-            } // 🔹 Fin del alcance (scope)
+            // Enviar el mensaje directamente a los clientes
+            await Clients.All.SendAsync("RecibirMensaje", mensajeDto);
         }
+
     }
 }

@@ -27,16 +27,6 @@
   },
   {
     "ContainingType": "MiProyectoAPI.Controllers.MensajesController",
-    "Method": "ObtenerMensajes",
-    "RelativePath": "api/mensajes/ObtenerMensajes",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MiProyectoAPI.Controllers.MensajesController",
     "Method": "ObtenerMensajesConUsuario",
     "RelativePath": "api/mensajes/ObtenerMensajesConUsuario",
     "HttpMethod": "GET",
@@ -107,6 +97,22 @@
       {
         "Name": "usuarioCorto",
         "Type": "MiProyectoAPI.Models.UsuarioCorto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MiProyectoAPI.Controllers.UsuariosController",
+    "Method": "ObtenerImagen",
+    "RelativePath": "api/Usuarios/ObtenerImagen/{usuarioId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

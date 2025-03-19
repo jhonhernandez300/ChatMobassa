@@ -21,6 +21,15 @@ export class UsuarioService {
     withCredentials: true
   };  
 
+  ObtenerImagen(usuarioId: number): Observable<{ imagenNombre: string }> {
+    return this.http.get<{ imagenNombre: string }>(`${this.apiUrl}/ObtenerImagen/${usuarioId}`).pipe(
+      catchError(error => {
+        console.error('Error al obtener la imagen:', error);
+        return throwError(() => new Error('No se pudo obtener la imagen.'));
+      })
+    );
+  }  
+
   GuardarUsuario(formData: FormData): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/GuardarUsuario`, formData).pipe(
       catchError(error => {

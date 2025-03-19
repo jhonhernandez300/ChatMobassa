@@ -52,7 +52,7 @@ export class RegistrarseComponent implements OnInit, AfterViewInit {
         this.validarContrasena 
       ]],
       apodo: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(30)]],
-      imagenURL: ['URL-de-imagen-por-defecto.jpg' ]
+      imagenURL: ['' ]
     });
   }
 
@@ -101,8 +101,8 @@ export class RegistrarseComponent implements OnInit, AfterViewInit {
     //Agregar imagen si el usuario ha seleccionado una
     if (this.selectedFile) {
       formData.append('imagen', this.selectedFile);
-    }
-  
+    }  
+    
     this.usuarioService.GuardarUsuario(formData).subscribe({
       next: (response: any) => {
         this.dialog.open(CloseDialogComponent, {

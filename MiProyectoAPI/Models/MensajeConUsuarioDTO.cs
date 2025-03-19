@@ -7,6 +7,8 @@
         public DateTime FechaYHora { get; set; }
         public int UsuarioId { get; set; }
         public string UsuarioNombre { get; set; }
-        public string? ImagenRuta { get; set; } // Imagen opcional
+        public string? ImagenRuta { get; set; } 
+        public string? gifUrl { get; set; }
+        public string? videoUrl { get; set; }
     }
 }

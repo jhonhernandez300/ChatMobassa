@@ -2,5 +2,7 @@ export interface iMensaje{
     Id: number, 
     Contenido: string,
     FechaYHora: Date,    
-    UsuarioId: number
+    UsuarioId: number,
+    GifUrl: string,
+    VideoUrl: string
 }

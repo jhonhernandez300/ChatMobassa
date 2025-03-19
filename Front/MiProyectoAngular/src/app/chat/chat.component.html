@@ -2,20 +2,32 @@
   <h2 class="text-center">Chat en Tiempo Real</h2>
 
   <ul class="list-group">
-    <li class="list-group-item d-flex align-items-center" *ngFor="let msg of mensajes">
+    <li class="list-group-item d-flex align-items-start" *ngFor="let msg of mensajes">
       <img *ngIf="msg.imagenRuta && msg.imagenRuta.trim() !== ''" 
-     [src]="getImagenUrl(msg.imagenRuta)" 
-     alt="Imagen de usuario"
-     class="rounded-circle me-2" 
-     width="80" height="80">
+           [src]="getImagenUrl(msg.imagenRuta)" 
+           alt="Imagen de usuario"
+           class="rounded-circle me-2" 
+           width="40" height="40">
       <div>
         <strong>{{ msg.usuarioNombre }}:</strong> {{ msg.contenido }}  
         <br>
         <small class="text-muted">{{ msg.fechaYHora | date: 'short' }}</small>
+        
+        <!-- Mostrar GIF si existe -->
+        <div *ngIf="msg.gifUrl" class="mt-2">
+          <img [src]="msg.gifUrl" alt="GIF enviado" width="200">
+        </div>
+  
+        <!-- Mostrar Video si existe -->
+        <div *ngIf="msg.videoUrl" class="mt-2">
+          <a [href]="msg.videoUrl" target="_blank" class="btn btn-sm btn-danger">
+            ▶ Ver video en YouTube
+          </a>
+        </div>
       </div>
     </li>
   </ul>
-
+  
   <div class="mt-3">
     <input [(ngModel)]="inputMensaje" class="form-control" placeholder="Escribe un mensaje">    
   </div>
@@ -40,5 +52,4 @@
       <button (click)="enviarMensaje()" class="btn btn-primary mt-2">Enviar</button>
     </div>
   </div>
-
 </div>

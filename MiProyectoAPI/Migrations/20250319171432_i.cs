@@ -38,7 +38,9 @@ namespace MiProyectoAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Contenido = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaYHora = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UsuarioId = table.Column<int>(type: "int", nullable: false)
+                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    gifUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    videoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -56,8 +58,8 @@ namespace MiProyectoAPI.Migrations
                 columns: new[] { "UsuarioId", "Apodo", "Correo", "ImagenRuta", "Nombre", "Password" },
                 values: new object[,]
                 {
-                    { 1, "James", "james@gmail.com", "James1", "James", "James0101*" },
-                    { 2, "Radamel", "radamel@gmail.com", "Radamel1", "Radamel", "Radamel0101*" }
+                    { 1, "James", "james@gmail.com", "", "James", "James0101*" },
+                    { 2, "Radamel", "radamel@gmail.com", "", "Radamel", "Radamel0101*" }
                 });
 
             migrationBuilder.CreateIndex(

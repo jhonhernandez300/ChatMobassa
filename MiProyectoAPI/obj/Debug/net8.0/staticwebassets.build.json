@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bJo/+ZpZpgAztneWncR42g4SlEivT+f6r8Uo6uirNCM=",
+  "Hash": "4743/ON8x1c/vf/tyQDLUUqHzt19j0yX2FsASzNq23g=",
   "Source": "MiProyectoAPI",
   "BasePath": "_content/MiProyectoAPI",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\6098986b-d7fc-4c56-b4b1-eb502ef08f21.png",
+      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\154cc62f-9bc3-4cdd-ae2b-98ab93462f4e.jpeg",
       "SourceId": "MiProyectoAPI",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\",
       "BasePath": "_content/MiProyectoAPI",
-      "RelativePath": "imagenes/6098986b-d7fc-4c56-b4b1-eb502ef08f21.png",
+      "RelativePath": "imagenes/154cc62f-9bc3-4cdd-ae2b-98ab93462f4e.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -33,15 +33,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\6098986b-d7fc-4c56-b4b1-eb502ef08f21.png"
+      "OriginalItemSpec": "wwwroot\\imagenes\\154cc62f-9bc3-4cdd-ae2b-98ab93462f4e.jpeg"
     },
     {
-      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\9c514ba5-4e38-46cc-8946-5f3cbc2bdd40.jpeg",
+      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\2c521b1c-3211-4c2d-8394-788f4265ff2b.jpeg",
       "SourceId": "MiProyectoAPI",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\",
       "BasePath": "_content/MiProyectoAPI",
-      "RelativePath": "imagenes/9c514ba5-4e38-46cc-8946-5f3cbc2bdd40.jpeg",
+      "RelativePath": "imagenes/2c521b1c-3211-4c2d-8394-788f4265ff2b.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,15 +52,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\9c514ba5-4e38-46cc-8946-5f3cbc2bdd40.jpeg"
+      "OriginalItemSpec": "wwwroot\\imagenes\\2c521b1c-3211-4c2d-8394-788f4265ff2b.jpeg"
     },
     {
-      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\eaf29758-1c02-42d8-b6ef-0fb2457f54cf.png",
+      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\3cb05a9c-b47a-4f2b-94d2-ba9484522d7e.png",
       "SourceId": "MiProyectoAPI",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\",
       "BasePath": "_content/MiProyectoAPI",
-      "RelativePath": "imagenes/eaf29758-1c02-42d8-b6ef-0fb2457f54cf.png",
+      "RelativePath": "imagenes/3cb05a9c-b47a-4f2b-94d2-ba9484522d7e.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -71,7 +71,64 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagenes\\eaf29758-1c02-42d8-b6ef-0fb2457f54cf.png"
+      "OriginalItemSpec": "wwwroot\\imagenes\\3cb05a9c-b47a-4f2b-94d2-ba9484522d7e.png"
+    },
+    {
+      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\6c5db3a3-0e2c-487b-9ad4-b8e5478e65b2.jpeg",
+      "SourceId": "MiProyectoAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\",
+      "BasePath": "_content/MiProyectoAPI",
+      "RelativePath": "imagenes/6c5db3a3-0e2c-487b-9ad4-b8e5478e65b2.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\6c5db3a3-0e2c-487b-9ad4-b8e5478e65b2.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\d91d486c-c444-4f7a-b589-55b8ec32af87.jpeg",
+      "SourceId": "MiProyectoAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\",
+      "BasePath": "_content/MiProyectoAPI",
+      "RelativePath": "imagenes/d91d486c-c444-4f7a-b589-55b8ec32af87.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\d91d486c-c444-4f7a-b589-55b8ec32af87.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\imagenes\\f9373142-93fe-4f74-835d-948a9d25c394.jpeg",
+      "SourceId": "MiProyectoAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jhon\\OneDrive\\Documentos\\Pruebas empresas\\Chat\\DevMobassa\\MiProyectoAPI\\wwwroot\\",
+      "BasePath": "_content/MiProyectoAPI",
+      "RelativePath": "imagenes/f9373142-93fe-4f74-835d-948a9d25c394.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\f9373142-93fe-4f74-835d-948a9d25c394.jpeg"
     }
   ]
 }

@@ -15,7 +15,23 @@ namespace MiProyectoAPI.Controllers
         public UsuariosController(AppDbContext context)
         {
             _context = context;
-        }        
+        }
+
+        [HttpGet("ObtenerImagen/{usuarioId}")]
+        public async Task<IActionResult> ObtenerImagen(int usuarioId)
+        {
+            var usuario = await _context.Usuarios
+                .Where(u => u.UsuarioId == usuarioId)
+                .Select(u => new { u.ImagenRuta })
+                .FirstOrDefaultAsync();
+
+            if (usuario == null || string.IsNullOrEmpty(usuario.ImagenRuta))
+            {
+                return NotFound("No se encontró imagen para este usuario.");
+            }
+
+            return Ok(new { imagenNombre = usuario.ImagenRuta });
+        }
 
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] UsuarioCorto usuarioCorto)
@@ -69,7 +85,7 @@ namespace MiProyectoAPI.Controllers
                     }
 
                     // Guardar la ruta relativa en la base de datos
-                    usuario.ImagenRuta = $"/imagenes/{fileName}";
+                    usuario.ImagenRuta = $"{fileName}";
                 }
 
                 _context.Usuarios.Add(usuario);

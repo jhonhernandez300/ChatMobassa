@@ -37,8 +37,7 @@ export class ChatComponent implements OnInit {
   obtenerUsuario() {
     this.usuarioId = this.sessionStorageService.getData("usuarioId");
 
-    if (this.usuarioId) {      
-      console.log(this.usuarioId);      
+    if (this.usuarioId) {               
       this.cargarMensajes();
       
       this.chatService.iniciarConexion();
@@ -52,13 +51,14 @@ export class ChatComponent implements OnInit {
     if (!nombreArchivo || nombreArchivo.trim() === '') {
       return 'assets/default-user.png'; // Imagen por defecto si no hay imagen
     }
-    return `https://localhost:7276/imagenes/${nombreArchivo}`;
+    
+    const url = `https://localhost:7276/imagenes/${nombreArchivo.replace('/imagenes/', '')}`;    
+    return url;
   }
 
   cargarMensajes() {
     this.chatService.obtenerMensajes().subscribe({
-      next: (mensajes: iMensajeConUsuario[]) => {
-        console.log('Mensajes recibidos:', mensajes);
+      next: (mensajes: iMensajeConUsuario[]) => {        
         this.mensajes = mensajes;
         this.cdr.detectChanges(); // Forzar actualización de la vista
       },
@@ -68,36 +68,70 @@ export class ChatComponent implements OnInit {
 
   escucharMensajesEnTiempoReal() {
     this.chatService.obtenerMensajesEnTiempoReal().subscribe({
-      next: (mensaje: iMensajeConUsuarioNombre) => {
+      next: (mensaje: iMensajeConUsuario) => {  // <-- Asegúrate de que esta es la interfaz correcta
         if (!this.mensajes.some(m => m.id === mensaje.id)) {
           this.mensajes.push(mensaje);
+          this.cdr.detectChanges();  // Forzar actualización de la vista
         }
       },
       error: (error) => console.error('Error al recibir mensaje en tiempo real:', error)
     });
   }
 
-  enviarMensaje() {
-    if (this.inputMensaje.trim()) {
-      const nuevoMensaje = {
-        Id: 0, //En el backend se pone uno autoincrementable 
-        Contenido: this.inputMensaje,
-        FechaYHora: new Date(),
-        UsuarioId: this.usuarioId,
-        UsuarioNombre: this.usuarioNombre // ✅ Enviamos el nombre del usuario
-      };
-
-      this.chatService.enviarMensaje(nuevoMensaje);
-      this.inputMensaje = '';
+  enviarMensaje() {    
+    if (this.inputMensaje.trim() || this.gifUrl || this.videoUrl) {
+      this.usuarioService.ObtenerImagen(this.usuarioId).subscribe({
+        next: (data) => {
+          this.imagenRuta = data.imagenNombre.replace('/imagenes/', ''); 
+          console.log(this.imagenRuta);
+  
+          const nuevoMensaje: iMensajeConUsuario = {
+            id: 0,
+            contenido: this.inputMensaje.trim(),
+            fechaYHora: new Date(),
+            usuarioId: this.usuarioId,
+            usuarioNombre: this.usuarioNombre,
+            imagenRuta: this.imagenRuta || 'default-user.png',
+            gifUrl: this.gifUrl?.trim() || undefined,
+            videoUrl: this.videoUrl?.trim() || undefined
+          };          
+          
+          this.chatService.enviarMensaje(nuevoMensaje);
+          this.cdr.detectChanges(); // Forzar actualización de la vista
+          this.inputMensaje = '';
+          this.gifUrl = null;  // Limpia después de enviar
+          this.videoUrl = null;
+        },
+        error: (error) => {
+          console.error('Error al obtener la imagen:', error);
+  
+          const nuevoMensaje: iMensajeConUsuario = {
+            id: 0,
+            contenido: this.inputMensaje.trim(),
+            fechaYHora: new Date(),
+            usuarioId: this.usuarioId,
+            usuarioNombre: this.usuarioNombre,
+            imagenRuta: this.imagenRuta || 'default-user.png',
+            gifUrl: this.gifUrl?.trim() || undefined,
+            videoUrl: this.videoUrl?.trim() || undefined
+          };
+  
+          this.chatService.enviarMensaje(nuevoMensaje);
+          this.cdr.detectChanges(); // Forzar actualización de la vista
+          this.inputMensaje = '';
+          this.gifUrl = null;
+          this.videoUrl = null;
+        }
+      });
     }
-  }
+  }  
 
   searchGif() {
     this.apiServiceService.getGiphyGif(this.searchTerm).subscribe(response => {
-      this.gifUrl = response.data.length > 0 ? response.data[0].images.original.url : null;
+      this.gifUrl = response.data.length > 0 ? response.data[0].images.original.url.trim() : null;      
       this.videoUrl = null;
     });
-  }
+  }  
 
   searchVideo() {
     this.apiServiceService.getYoutubeVideo(this.searchTerm).subscribe(response => {
