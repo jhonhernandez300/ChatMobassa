@@ -11,6 +11,11 @@ En el front:
 * Bootstrap 5.3.3
 * Node js 20.14.0
 
+El proyecto de pruebas tiene los paquetes:
+* Microsoft.AspNetCore.Mvc.Testing 6.0.4
+* Microsoft.EntityFrameworkCore.InMemory 9.0.3
+* Moq 4.20.72
+
 Configuración  
 Borrar el contenido de la carpeta Migrations  
 En appsettings.json modificar Data Source por el nombre de su servidor de SQL, si usa usuario y contraseña, incluirlos:  
