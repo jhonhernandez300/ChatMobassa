@@ -1,4 +1,4 @@
-Esta aplicación se hizo con Angular 16.2.0, C# 8.0 y SQL 2019.
+Esta aplicación se hizo con Angular 16.2.0, .net 8.0 y SQL 2019.
 Es un chat en tiempo real que graba.
 
 El backend tiene instalados los paquetes: 
